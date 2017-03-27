@@ -1,7 +1,7 @@
-# MEAN-seed
-This is a fully functional basic MEAN stack app seed. It has passport, gulp, and sass capabilities (gulp and sass not required for use).
+# PizzaBoy
+This is an app for the Pizza Delivery Professional! Track your mileage and tips every day you work for "X" Pizza Co.
 
-###To use this seed
+###To use this repo:
 1. Git clone it
 2. Run `npm install -g gulp` (if you want to use gulp)
 3. In the project folder, run `npm install`

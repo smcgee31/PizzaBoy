@@ -13,16 +13,4 @@ angular.module('app').controller('loginCtrl', function($scope, authService, $sta
     });
   };
 
-  $scope.register = function(user) {
-    authService.registerUser(user).then(function(response) {
-      if (!response.data) {
-        alert('Unable to create user');
-      } else {
-        alert('User Created');
-        $scope.newUser = {};
-      }
-    }).catch(function(err) {
-      alert('Unable to create user');
-    });
-  };
 });

@@ -1,5 +1,5 @@
 module.exports = {
   PORT: 3000,
-  MONGO_URI: 'mongodb://localhost:27017/example-local-auth',
-  SESSION_SECRET: 'gweriwrb-erfawrg45-oasWsd'
+  MONGO_URI: 'mongodb://localhost:27017/pizza_boy',
+  SESSION_SECRET: 'wideboat453-Tangobanana849-slipperyPrinter572'
 };

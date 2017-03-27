@@ -2,9 +2,8 @@ angular.module("app").service("authService", function($http) {
 
   this.login = function(user) {
     // this first endpoint passes to server/services/passport.js and checks for 
-    // usernameField: 'email',
+    // usernameField: 'email',    <-- unless modified from 'email' to 'username' then it checks for username instead
     // passwordField: 'password'
-    // unless modified from 'email' to 'username'
     return $http({
       method: 'post',
       url: '/login',

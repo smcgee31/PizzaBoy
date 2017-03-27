@@ -1,6 +1,6 @@
 {
-  "name": "exampleLocalAuth",
-  "version": "0.0.0",
+  "name": "pizza_boy",
+  "version": "0.1.0",
   "private": false,
   "scripts": {
     "start": "node server/index.js"

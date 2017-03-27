@@ -17,15 +17,13 @@ angular.module("app").service("userService", function($http) {
       return response;
     });
   };
-
-  // Not Needed
-  //
-  // this.deleteUser = function(id) {
-  //   return $http({
-  //     method: 'DELETE',
-  //     url: '/user/' + id
-  //   }).then(function(response) {
-  //     return response;
-  //   });
-  // };
+  
+  this.deleteUser = function(id) {
+    return $http({
+      method: 'DELETE',
+      url: '/user/' + id
+    }).then(function(response) {
+      return response;
+    });
+  };
 });

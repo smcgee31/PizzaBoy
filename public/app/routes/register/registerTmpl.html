@@ -1,0 +1,20 @@
+<nav-dir></nav-dir>
+
+<div class="register">
+  <form ng-submit="register(newUser)">
+
+    <label for="register-name">Name</label>
+    <input id="register-name" type="text" ng-model="newUser.name" required/>
+
+    <label for="register-email">Email</label>
+    <input id="register-email" type="email" ng-model="newUser.email" required/>
+
+    <label for="register-username">Username</label>
+    <input id="register-username" type="text" ng-model="newUser.username" required/>
+    
+    <label for="register-password">Password</label>
+    <input id="register-password" type="password" ng-model="newUser.password" required/>
+
+    <button type="submit">Register</button>
+  </form>
+</div>
