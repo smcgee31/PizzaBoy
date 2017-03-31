@@ -1,4 +1,10 @@
+'use strict';
+
 angular.module('app').controller('newDayCtrl', function($scope) {
-  $scope.test = 'testing newDay';
+  
+  $scope.today = moment().format('dddd, MMMM Do, YYYY');
+
+  $scope.tripCounter = 0;
+
   
 });

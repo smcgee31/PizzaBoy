@@ -1,2 +1,34 @@
 <nav-dir></nav-dir>
-<h1>{{test}}</h1>
+<h2>{{today}}</h2>
+<form ng-submit="mileage()" ng-show="!tripCard">
+  <label for="mileage">Enter starting mileage</label>
+  <input id="mileage" type="number" ng-model="day.miles" required/>
+  <button type="submit" ng-click="tripCard = !tripCard">Start</button>
+</form>
+
+<div ng-show="tripCard">
+  <div>
+    Trip# {{tripCounter}}
+  </div>
+  <form>
+    <div>
+      <label for="freeTrip">Free Trip</label>
+      <input id="freeTrip" type="checkbox" ng-click="freeTrip = !freeTrip">
+    </div>
+    <div ng-show="!freeTrip">
+      <div>
+        <label for="tipAmt">Tip Amount $</label>
+        <input id="tipAmt" type="number" ng-model="day.tip" required/>
+      </div>
+      <div>
+        <label for="credit">Credit Card Tip</label>
+        <input id="credit" type="radio" name="tipType" ng-model="tip.type">
+      </div>
+      <div>
+        <label for="credit">Cash Tip</label>
+        <input id="cash" type="radio" name="tipType" ng-model="tip.type">
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
