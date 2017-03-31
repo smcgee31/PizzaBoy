@@ -6,5 +6,4 @@ angular.module('app').controller('newDayCtrl', function($scope) {
 
   $scope.tripCounter = 0;
 
-  
 });

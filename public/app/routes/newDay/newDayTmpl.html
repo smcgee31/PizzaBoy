@@ -18,15 +18,15 @@
     <div ng-show="!freeTrip">
       <div>
         <label for="tipAmt">Tip Amount $</label>
-        <input id="tipAmt" type="number" ng-model="day.tip" required/>
+        <input id="tipAmt" type="number" ng-model="newTip.tipAmount" required/>
       </div>
       <div>
         <label for="credit">Credit Card Tip</label>
-        <input id="credit" type="radio" name="tipType" ng-model="tip.type">
+        <input id="credit" type="radio" name="tipType" ng-model="newTip.tipType.cCard">
       </div>
       <div>
         <label for="credit">Cash Tip</label>
-        <input id="cash" type="radio" name="tipType" ng-model="tip.type">
+        <input id="cash" type="radio" name="tipType" ng-model="newTip.tipType.cash">
       </div>
     </div>
     <button type="submit">Submit</button>
