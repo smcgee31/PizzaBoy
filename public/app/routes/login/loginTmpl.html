@@ -3,13 +3,20 @@
 <div class="login">
   <form ng-submit="login(user)">
 
-    <label for="login-username">Username</label>
-    <input id="login-username" type="username" ng-model="user.username" required/>
+    <div>
+      <label for="login-username">Username</label>
+      <input id="login-username" type="username" ng-model="user.username" required/>
+    </div>
 
-    <label for="login-password"></label>
-    <input id="login-password" type="password" ng-model="user.password" required/>
+    <div>
+      <label for="login-password">Password</label>
+      <input id="login-password" type="password" ng-model="user.password" required/>
+    </div>
 
-    <button type="submit">Log In</button>
+    <div>
+      <button type="submit">Log In</button>
+    </div>
+
   </form>
   <a ui-sref="register">Register as New User</a>
 </div>
