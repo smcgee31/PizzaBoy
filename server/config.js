@@ -1,5 +1,9 @@
+'use strict';
+
+const keys = require('../secretKeys');
+
 module.exports = {
-  PORT: 3000,
-  MONGO_URI: 'mongodb://localhost:27017/pizza_boy',
-  SESSION_SECRET: 'wideboat453-Tangobanana849-slipperyPrinter572'
+  PORT: keys.PORT,
+  MONGO_URI: keys.MONGO_URI,
+  SESSION_SECRET: keys.SESSION_SECRET
 };

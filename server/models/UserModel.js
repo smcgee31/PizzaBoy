@@ -2,17 +2,17 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var objectId  = mongoose.Schema.Types.ObjectId;
 
-var userSchema = new mongoose.Schema({
+var User = new mongoose.Schema({
     name: { type: String }
   , username: { type: String }
   , email: { type: String, index: true, trim: true }
   , password: { type: String }
-  , tips: [
-    { type: objectId, ref: 'Tip'}
+  , shift: [
+    { type: objectId, ref: 'Shift'}
   ]
 });
 
-userSchema.pre('save', function(next) {
+User.pre('save', function(next) {
 	var user = this;
 	if (!user.isModified('password'))	return next();
   var salt = bcrypt.genSaltSync(10);
@@ -21,9 +21,9 @@ userSchema.pre('save', function(next) {
   return next(null, user);
 });
 
-userSchema.methods.verifyPassword = function(reqBodyPassword) {
+User.methods.verifyPassword = function(reqBodyPassword) {
   var user = this;
   return bcrypt.compareSync(reqBodyPassword, user.password);
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', User);

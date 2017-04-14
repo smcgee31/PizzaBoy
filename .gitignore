@@ -34,3 +34,4 @@ node_modules
 
 bundle.js
 style.css
+secretKeys.js
