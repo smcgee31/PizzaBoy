@@ -20,10 +20,10 @@ var app = angular.module('app', ['ui.router'])
       , templateUrl: './app/routes/register/registerTmpl.html'
       , controller: 'registerCtrl'
     })
-    .state('newDay', {
-        url: '/newDay'
-      , templateUrl: './app/routes/newDay/newDayTmpl.html'
-      , controller: 'newDayCtrl'
+    .state('newShift', {
+        url: '/newShift'
+      , templateUrl: './app/routes/newShift/newShiftTmpl.html'
+      , controller: 'newShiftCtrl'
     })
     .state('yesterday', {
         url: '/yesterday'

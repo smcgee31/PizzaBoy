@@ -9,7 +9,7 @@ var config     = require('./config');
 
 // CONTROLLERS //
 var UserCtrl   = require('./controllers/UserCtrl');
-// var newDayCtrl = require('./controllers/newDayCtrl');
+// var newShiftCtrl = require('./controllers/newShiftCtrl');
 
 // SERVICES //
 var passport   = require('./services/passport');
@@ -52,7 +52,7 @@ app.get('/me', isAuthed, UserCtrl.me);
 app.put('/user/:_id', isAuthed, UserCtrl.update);
 
 // Other Endpoints
-// app.post('/newDay', newDayCtrl.postTip);
+// app.post('/newShift', newShiftCtrl.postTip);
 
 // CONNECTIONS //
 var mongoURI = config.MONGO_URI;

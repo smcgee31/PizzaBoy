@@ -2,7 +2,7 @@
 <h2>{{today}}</h2>
 <form ng-submit="mileage()" ng-show="!tripCard">
   <label for="mileage">Enter starting mileage</label>
-  <input id="mileage" type="number" ng-model="day.miles" required/>
+  <input id="mileage" type="number" ng-model="shift.miles" required/>
   <button type="submit" ng-click="tripCard = !tripCard">Start</button>
 </form>
 

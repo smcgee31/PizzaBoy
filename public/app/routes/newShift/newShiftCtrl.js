@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('newDayCtrl', function($scope) {
+angular.module('app').controller('newShiftCtrl', function($scope) {
   
   $scope.today = moment().format('dddd, MMMM Do, YYYY');
 
