@@ -1,9 +1,9 @@
-angular.module('app').service('newDaySvc', function ($http) {
+angular.module('app').service('newShiftSvc', function ($http) {
 
   this.addTip = function (newTip) {
     return $http({
       method: 'POST',
-      url: '/newDay',
+      url: '/newShift',
       data: newTip
     }).then(function (response) {
       return response;
