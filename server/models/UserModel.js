@@ -1,11 +1,12 @@
 var mongoose = require('mongoose');
+require('mongoose-type-email')
 var bcrypt = require('bcryptjs');
 var objectId  = mongoose.Schema.Types.ObjectId;
 
 var User = new mongoose.Schema({
     name: { type: String }
   , username: { type: String }
-  , email: { type: String, index: true, trim: true }
+  , email: { type: mongoose.SchemaTypes.Email, index: true, trim: true }
   , password: { type: String }
   , shift: [
     { type: objectId, ref: 'Shift'}
