@@ -10,23 +10,23 @@
   <div>
     Trip# {{tripCounter}}
   </div>
-  <form>
+  <form ng-submit="submitTrip(trip)">
     <div>
-      <label for="freeTrip">Free Trip</label>
-      <input id="freeTrip" type="checkbox" ng-click="freeTrip = !freeTrip">
-    </div>
-    <div ng-show="!freeTrip">
       <div>
         <label for="tipAmt">Tip Amount $</label>
-        <input id="tipAmt" type="number" ng-model="newTip.tipAmount" required/>
+        <input id="tipAmt" type="number" min="0.00" step="0.01" ng-model="trip.tipAmount" required/>
       </div>
       <div>
         <label for="credit">Credit Card Tip</label>
-        <input id="credit" type="radio" name="tipType" ng-model="newTip.tipType.cCard">
+        <input id="credit" class="tipType" type="radio" name="tipType" ng-model="trip.tipType" value="credit" required>
       </div>
       <div>
-        <label for="credit">Cash Tip</label>
-        <input id="cash" type="radio" name="tipType" ng-model="newTip.tipType.cash">
+        <label for="cash">Cash Tip</label>
+        <input id="cash" class="tipType" type="radio" name="tipType" ng-model="trip.tipType" value="cash" required>
+      </div>
+      <div>
+        <label for="free">Free Trip</label>
+        <input id="free" class="tipType" type="radio" name="tipType" ng-model="trip.tipType" value="free" required>
       </div>
     </div>
     <button type="submit">Submit</button>

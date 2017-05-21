@@ -1,30 +1,31 @@
 // EXTERNAL MODULES //
-var express    = require('express');
-var bodyParser = require('body-parser');
-var session    = require('express-session');
-var mongoose   = require('mongoose');
+const express    = require('express');
+const bodyParser = require('body-parser');
+const session    = require('express-session');
+const mongoose   = require('mongoose');
 
 // CONFIG //
-var config     = require('./config');
+const config     = require('./config');
 
 // CONTROLLERS //
-var UserCtrl   = require('./controllers/UserCtrl');
-// var newShiftCtrl = require('./controllers/newShiftCtrl');
+const UserCtrl   = require('./controllers/UserCtrl');
+const newShiftCtrl = require('./controllers/ShiftCtrl');
 
 // SERVICES //
-var passport   = require('./services/passport');
+const passport   = require('./services/passport');
 
 
 // POLICIES //
-var isAuthed = function(req, res, next) {
+const isAuthed = function(req, res, next) {
   if (!req.isAuthenticated()) return res.status(401).send();
   return next();
 };
 
 // EXPRESS //
-var app = express();
+const app = express();
 
 app.use(express.static(__dirname + './../public'));
+// app.use(favicon(__dirname + './../public/img/favicon.ico'));
 app.use(bodyParser.json());
 
 // Session and passport
@@ -52,11 +53,11 @@ app.get('/me', isAuthed, UserCtrl.me);
 app.put('/user/:_id', isAuthed, UserCtrl.update);
 
 // Other Endpoints
-// app.post('/newShift', newShiftCtrl.postTip);
+app.post('/newShift/:id', ShiftCtrl.submitTrip);
 
 // CONNECTIONS //
-var mongoURI = config.MONGO_URI;
-var port     = config.PORT;
+const mongoURI = config.MONGO_URI;
+const port     = config.PORT;
 
 mongoose.connect(mongoURI);
 mongoose.connection.once('open', function() {

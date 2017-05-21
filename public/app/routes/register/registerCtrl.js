@@ -1,8 +1,8 @@
 angular.module('app').controller('registerCtrl', function($scope, authService, $state) {
 
-  $scope.register = function(user) {
+  $scope.register = (user) => {
     authService.registerUser(user)
-    .then(function(response) {
+    .then((response) => {
       if (!response.data) {
         alert('Unable to create user');
       } else {
@@ -10,7 +10,7 @@ angular.module('app').controller('registerCtrl', function($scope, authService, $
         $scope.newUser = {};
         $state.go('login');
       }
-    }).catch(function(err) {
+    }).catch((err) => {
       alert('Unable to create user');
     });
   };

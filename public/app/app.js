@@ -24,6 +24,11 @@ var app = angular.module('app', ['ui.router'])
         url: '/newShift'
       , templateUrl: './app/routes/newShift/newShiftTmpl.html'
       , controller: 'newShiftCtrl'
+      , resolve: {
+        user: function(authService) {
+          return authService.getCurrentUser();
+        }
+      }
     })
     .state('yesterday', {
         url: '/yesterday'

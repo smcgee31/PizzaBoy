@@ -1,11 +1,11 @@
 angular.module('app').service('newShiftSvc', function ($http) {
 
-  this.addTip = function (newTip) {
+  this.addTrip = (tripInfo) => {
     return $http({
       method: 'POST',
       url: '/newShift',
-      data: newTip
-    }).then(function (response) {
+      data: tripInfo
+    }).then((response) => {
       return response;
     })
   };
