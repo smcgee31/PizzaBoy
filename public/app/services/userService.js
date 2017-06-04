@@ -1,4 +1,4 @@
-angular.module("app").service("userService", function($http) {
+angular.module('app').service('userService', function($http) {
 
   this.getUsers = function() {
     return $http({

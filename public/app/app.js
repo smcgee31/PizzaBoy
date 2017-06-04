@@ -1,5 +1,4 @@
-var app = angular.module('app', ['ui.router'])
-
+const app = angular.module('app', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/");
@@ -25,9 +24,19 @@ var app = angular.module('app', ['ui.router'])
       , templateUrl: './app/routes/newShift/newShiftTmpl.html'
       , controller: 'newShiftCtrl'
       , resolve: {
-        user: function(authService) {
-          return authService.getCurrentUser();
-        }
+          user: function(authService) {
+            return authService.getCurrentUser()
+          }
+      }
+    })
+    .state('addTrips', {
+        url: '/addTrips'
+      , templateUrl: './app/routes/newShift/addTripsTmpl.html'
+      , controller: 'newShiftCtrl'
+      , resolve: {
+          user: function(authService) {
+            return authService.getCurrentUser();
+          }
       }
     })
     .state('yesterday', {
@@ -51,15 +60,15 @@ var app = angular.module('app', ['ui.router'])
       , controller: 'profileCtrl'
       , resolve: {
         user: function(authService, $state) {
-          return authService.getCurrentUser().then(function(response) {
-            if (!response.data)
+          return authService.getCurrentUser()
+            .then(function(response) {
+              if (!response.data)
+                $state.go('login');
+              return response.data;
+            }).catch(function(err) {
               $state.go('login');
-            return response.data;
-          }).catch(function(err) {
-            $state.go('login');
-          });
+            });
         }
       }
     });
-
 });

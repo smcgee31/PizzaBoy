@@ -9,7 +9,7 @@ const config     = require('./config');
 
 // CONTROLLERS //
 const UserCtrl   = require('./controllers/UserCtrl');
-const newShiftCtrl = require('./controllers/ShiftCtrl');
+const ShiftCtrl = require('./controllers/ShiftCtrl');
 
 // SERVICES //
 const passport   = require('./services/passport');
@@ -53,7 +53,9 @@ app.get('/me', isAuthed, UserCtrl.me);
 app.put('/user/:_id', isAuthed, UserCtrl.update);
 
 // Other Endpoints
-app.post('/newShift/:id', ShiftCtrl.submitTrip);
+app.post('/newShift/:id', ShiftCtrl.createNewShift);
+app.put('/addTrips/:id', ShiftCtrl.createTrip);
+app.get('/addTrips/getShift/:id', ShiftCtrl.readCurrentShift);
 
 // CONNECTIONS //
 const mongoURI = config.MONGO_URI;

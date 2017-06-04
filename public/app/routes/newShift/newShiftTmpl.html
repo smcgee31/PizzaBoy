@@ -1,34 +1,9 @@
 <nav-dir></nav-dir>
-<h2>{{today}}</h2>
-<form ng-submit="mileage()" ng-show="!tripCard">
-  <label for="mileage">Enter starting mileage</label>
-  <input id="mileage" type="number" ng-model="shift.miles" required/>
-  <button type="submit" ng-click="tripCard = !tripCard">Start</button>
-</form>
 
-<div ng-show="tripCard">
-  <div>
-    Trip# {{tripCounter}}
-  </div>
-  <form ng-submit="submitTrip(trip)">
-    <div>
-      <div>
-        <label for="tipAmt">Tip Amount $</label>
-        <input id="tipAmt" type="number" min="0.00" step="0.01" ng-model="trip.tipAmount" required/>
-      </div>
-      <div>
-        <label for="credit">Credit Card Tip</label>
-        <input id="credit" class="tipType" type="radio" name="tipType" ng-model="trip.tipType" value="credit" required>
-      </div>
-      <div>
-        <label for="cash">Cash Tip</label>
-        <input id="cash" class="tipType" type="radio" name="tipType" ng-model="trip.tipType" value="cash" required>
-      </div>
-      <div>
-        <label for="free">Free Trip</label>
-        <input id="free" class="tipType" type="radio" name="tipType" ng-model="trip.tipType" value="free" required>
-      </div>
-    </div>
-    <button type="submit">Submit</button>
-  </form>
-</div>
+<h2>{{today}}</h2>
+
+<form ng-submit="newShift(miles)">
+  <label for="mileage">Enter starting mileage</label>
+  <input id="mileage" type="number" min="1" step="1" ng-model="miles" required/>
+  <button type="submit">Start</button>
+</form>
