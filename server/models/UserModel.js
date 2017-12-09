@@ -4,11 +4,11 @@ const bcrypt = require('bcryptjs');
 const objectId  = mongoose.Schema.Types.ObjectId;
 
 const User = new mongoose.Schema({
-    name: { type: String }
-  , username: { type: String }
-  , email: { type: mongoose.SchemaTypes.Email, index: true, trim: true }
-  , password: { type: String }
-  , shifts: [ { type: objectId, ref: 'Shift'} ]
+  name: { type: String },
+  username: { type: String },
+  email: { type: mongoose.SchemaTypes.Email, index: true, trim: true },
+  password: { type: String },
+  shifts: [ { type: objectId, ref: 'Shift'} ],
 });
 
 User.pre('save', function(next) {

@@ -3,11 +3,16 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "dev": "nodemon ./server/index",
+    "test": "SET NODE_ENV=development && mocha --recursive",
+    "lint": "eslint"
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.14.1",
+    "eslint-config-vstg": "^2.2.1",
+    "eslint-plugin-import": "^2.8.0",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "mongoose": "^4.2.5",

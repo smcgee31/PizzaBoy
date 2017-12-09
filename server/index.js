@@ -3,14 +3,11 @@ const express    = require('express');
 const bodyParser = require('body-parser');
 const session    = require('express-session');
 const mongoose   = require('mongoose');
-
 // CONFIG //
 const config     = require('./config');
-
 // CONTROLLERS //
 const UserCtrl   = require('./controllers/UserCtrl');
-const ShiftCtrl = require('./controllers/ShiftCtrl');
-
+const ShiftCtrl  = require('./controllers/ShiftCtrl');
 // SERVICES //
 const passport   = require('./services/passport');
 
