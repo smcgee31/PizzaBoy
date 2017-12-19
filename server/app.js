@@ -1,16 +1,15 @@
-// EXTERNAL MODULES //
+'use strict';
+
 const express    = require('express');
-const bodyParser = require('body-parser');
 const session    = require('express-session');
 const mongoose   = require('mongoose');
-// CONFIG //
-const config     = require('./config');
+const MongoStore = require('connect-mongo')(session);
+const bodyParser = require('body-parser');
+const passport   = require('./services/passport');
+
 // CONTROLLERS //
 const UserCtrl   = require('./controllers/UserCtrl');
 const ShiftCtrl  = require('./controllers/ShiftCtrl');
-// SERVICES //
-const passport   = require('./services/passport');
-
 
 // POLICIES //
 const isAuthed = function(req, res, next) {
@@ -27,9 +26,10 @@ app.use(bodyParser.json());
 
 // Session and passport
 app.use(session({
-  secret: config.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET,
   saveUninitialized: false,
-  resave: false
+  resave: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -54,14 +54,4 @@ app.post('/newShift/:id', ShiftCtrl.createNewShift);
 app.put('/addTrips/:id', ShiftCtrl.createTrip);
 app.get('/addTrips/getShift/:id', ShiftCtrl.readCurrentShift);
 
-// CONNECTIONS //
-const mongoURI = config.MONGO_URI;
-const port     = config.PORT;
-
-mongoose.connect(mongoURI);
-mongoose.connection.once('open', function() {
-  console.log('Connected to Mongo DB at', mongoURI);
-  app.listen(port, function() {
-    console.log('Listening on port '+ port);
-  });
-});
+module.exports = app;

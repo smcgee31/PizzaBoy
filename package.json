@@ -3,24 +3,27 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "nodemon ./server/index",
+    "start": "node server/start.js",
+    "dev": "nodemon ./server/start.js",
     "test": "SET NODE_ENV=development && mocha --recursive",
     "lint": "eslint"
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.14.1",
-    "eslint-config-vstg": "^2.2.1",
-    "eslint-plugin-import": "^2.8.0",
-    "express": "^4.13.3",
+    "connect-mongo": "^2.0.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
     "express-session": "^1.12.1",
+    "moment": "^2.20.0",
     "mongoose": "^4.2.5",
     "mongoose-type-email": "^1.0.5",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "eslint-config-vstg": "^2.2.1",
+    "eslint-plugin-import": "^2.8.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
@@ -31,7 +34,6 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-watch": "^4.3.5",
-    "moment": "^2.18.1",
     "nodemon": "^1.11.0"
   }
 }
