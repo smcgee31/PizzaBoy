@@ -45,4 +45,4 @@ gulp.task('watch', function() {
 
 // RUN DEFAULT TASK - first thing to run when gulp is called
 // ============================================================
-gulp.task('default', ['watch', 'js', 'sass']); 
+gulp.task('default', ['watch', 'js', 'sass']);

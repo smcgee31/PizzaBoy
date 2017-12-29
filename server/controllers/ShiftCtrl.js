@@ -23,8 +23,8 @@ module.exports = {
   },
 
   createTrip: function(req, res, next) {
-    const newTrip = new Trip(req.body);
-    newTrip.save((error, response) => {
+    const trip = new Trip(req.body);
+    trip.save((error, response) => {
       if (error) {
         res.status(500).json(error);
       } else {
