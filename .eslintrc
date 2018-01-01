@@ -12,5 +12,10 @@
     "global-require": "off",
     "camelcase": "off",
     "no-console": "off"
+  },
+  "globals": {
+    "angular": true,
+    "alert": true,
+    "moment": true
   }
 }

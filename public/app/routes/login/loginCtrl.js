@@ -1,17 +1,20 @@
-angular.module('app').controller('loginCtrl', function($scope, authService, $state) {
-
+angular.module('app').controller('loginCtrl', function($scope, AuthService, $state) {
   $scope.login = function(user) {
-    authService.login(user)
+    AuthService.login(user)
       .then((response) => {
         if (!response.data) {
-          alert('User does not exist');
           $scope.user.password = '';
-        } else {
-          $state.go('profile');
+
+          const error = new Error();
+
+          error.message = 'User not found, unable to login';
+
+          throw error;
         }
+        $state.go('profile');
       }).catch((err) => {
-        alert('Unable to login');
+        console.log('Error:\n', err);
+        alert(err.message);
       });
   };
-
 });

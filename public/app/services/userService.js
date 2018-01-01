@@ -1,4 +1,4 @@
-angular.module('app').service('userService', function($http) {
+angular.module('app').service('UserService', function($http) {
 
   this.getUsers = function() {
     return $http({
@@ -12,16 +12,16 @@ angular.module('app').service('userService', function($http) {
   this.getUser = function(id) {
     return $http({
       method: 'GET',
-      url: '/user?_id=' + id
+      url: `/user?_id=${ id }`
     }).then(function(response) {
       return response;
     });
   };
-  
+
   this.deleteUser = function(id) {
     return $http({
       method: 'DELETE',
-      url: '/user/' + id
+      url: `/user/${ id }`
     }).then(function(response) {
       return response;
     });

@@ -1,62 +1,55 @@
-angular.module('app').controller('newShiftCtrl', function($scope, $state, newShiftSvc, user) {
+angular.module('app').controller('newShiftCtrl', function($scope, $localStorage, $sessionStorage, $state, ShiftService, user) {
+  const userId = user.data._id; // eslint-disable-line no-underscore-dangle
 
-  const userId = user.data._id;
+  $scope.$storage = $localStorage;
 
   $scope.today = moment().format('dddd, MMMM Do, YYYY');
-  $scope.now = moment().format('MMMM DD, YYYY, h:mm a');  // this might oughta be part of the ShiftModel
   $scope.tripCounter = 1;
 
   $scope.newShift = (miles) => {
-    newShiftSvc.newShift(miles, userId)
+    $scope.$storage.beginMiles = miles;
+    $localStorage.currShiftId = moment().unix();
+    ShiftService.newShift(miles, userId, $localStorage.currShiftId)
       .then((response) => {
         if (!response.shifts) {
-          alert('Something went wrong,\n your new shift was not started :(');
           $scope.miles = '';
-        } else {
-          alert('Your new shift has been created!  :-D');
-          shiftId = response.shifts.pop();
-          console.log('shiftId-1:', shiftId);
-          $state.go('addTrips');
+          const error = new Error();
+
+          error.message = 'Something went wrong.\n Your new shift was not started.';
         }
+        alert('Your new shift has been created!  :-D');
+        $state.go('addTrips');
       })
       .catch((error) => {
-        console.log('error:', error);
+        console.log('NewShift Error:', error);
+        alert(error.message);
       });
   };
 
   $scope.addTrip = (trip) => {
     trip.tripNumber = $scope.tripCounter;
-    console.log('shiftId-2:', shiftId);
-    newShiftSvc.addTrip(trip, shiftId)
+    ShiftService.addTrip(trip, $localStorage.currShiftId)
       .then((response) => {
-        if (!response.data) {
-          alert('Something went wrong,\n your trip was not recorded :(')
+        if (response.data.status > 299) {
           $scope.trip.tipAmount = '';
-        } else {
-          alert(`Success!
-            $ ${$scope.trip.tipAmount} tip recorded.`);
-          console.log('response:', response);
-          let tipType = document.getElementsByClassName('tipType');
-          for(let i = 0; i < tipType.length; i++) {
-            tipType[i].checked = false;
-          }
+          const error = new Error();
 
-          $scope.trip.tipAmount = '';
-          $scope.tripCounter++;
+          error.message = 'Something went wrong.\n Your trip was not recorded';
+          throw error;
         }
+        alert(`Success!\n$${ $scope.trip.tipAmount } tip recorded.`);
+        const tipType = document.getElementsByClassName('tipType');
+
+        for (let i = 0; i < tipType.length; i++) {
+          tipType[i].checked = false;
+        }
+
+        $scope.trip.tipAmount = '';
+        $scope.tripCounter++;
       })
       .catch((error) => {
-        console.log('error:', error);
+        alert(error.message || 'Bad JooJoo!!'); // TODO: I think this indicates that the error is created or used wrong above and throughout the app
+        console.log('AddTrip Error:', error);
       });
   };
-
-  $scope.refreshShift = (userId) => {
-    newShiftSvc.getCurrentShift()
-    .then((response) => {
-      $scope.shift = response.data.shifts.pop();
-    })
-  }
-
-
-  
 });

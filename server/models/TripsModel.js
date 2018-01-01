@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const objectId  = mongoose.Schema.Types.ObjectId;
+const objectId = mongoose.Schema.Types.ObjectId;
 
 const Trip = new mongoose.Schema({
   tripNumber: { type: Number, required: true },
