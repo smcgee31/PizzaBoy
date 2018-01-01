@@ -39,7 +39,7 @@ module.exports = {
     });
   },
 
-  // TODO: fix the following function
+  // TODO: fix the following function, probably rewrite
   getUsersShifts(req, res) {
     User.findById(req.params.id, (error, response) => {
       if (error) {

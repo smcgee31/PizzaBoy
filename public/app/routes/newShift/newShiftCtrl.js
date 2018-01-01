@@ -9,6 +9,7 @@ angular.module('app').controller('newShiftCtrl', function($scope, $localStorage,
   $scope.newShift = (miles) => {
     $scope.$storage.beginMiles = miles;
     $localStorage.currShiftId = moment().unix();
+
     ShiftService.newShift(miles, userId, $localStorage.currShiftId)
       .then((response) => {
         if (!response.shifts) {
@@ -28,17 +29,21 @@ angular.module('app').controller('newShiftCtrl', function($scope, $localStorage,
 
   $scope.addTrip = (trip) => {
     trip.tripNumber = $scope.tripCounter;
+
     ShiftService.addTrip(trip, $localStorage.currShiftId)
       .then((response) => {
-        if (response.data.status > 299) {
-          $scope.trip.tipAmount = '';
+        if (response.data.status > 299) { // TODO: I'm not sure this is the correct way
           const error = new Error();
 
+          $scope.trip.tipAmount = '';
           error.message = 'Something went wrong.\n Your trip was not recorded';
+
           throw error;
         }
-        alert(`Success!\n$${ $scope.trip.tipAmount } tip recorded.`);
+
         const tipType = document.getElementsByClassName('tipType');
+
+        alert(`Success!\n$${ $scope.trip.tipAmount } tip recorded.`);
 
         for (let i = 0; i < tipType.length; i++) {
           tipType[i].checked = false;
@@ -48,7 +53,7 @@ angular.module('app').controller('newShiftCtrl', function($scope, $localStorage,
         $scope.tripCounter++;
       })
       .catch((error) => {
-        alert(error.message || 'Bad JooJoo!!'); // TODO: I think this indicates that the error is created or used wrong above and throughout the app
+        alert(error.message || 'Bad JooJoo!!'); // TODO: I think 'Bad JooJoo!' shows up because the error is created wrong or used wrong above (and throughout the app)
         console.log('AddTrip Error:', error);
       });
   };

@@ -3,16 +3,17 @@ angular.module('app').controller('loginCtrl', function($scope, AuthService, $sta
     AuthService.login(user)
       .then((response) => {
         if (!response.data) {
-          $scope.user.password = '';
-
           const error = new Error();
 
+          $scope.user.password = '';
           error.message = 'User not found, unable to login';
 
           throw error;
         }
+
         $state.go('profile');
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log('Error:\n', err);
         alert(err.message);
       });

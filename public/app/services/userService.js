@@ -1,29 +1,31 @@
 angular.module('app').service('UserService', function($http) {
-
-  this.getUsers = function() {
+  this.getUsers = () => {
     return $http({
       method: 'GET',
-      url: '/user'
-    }).then(function(response) {
-      return response;
-    });
+      url: '/user',
+    })
+      .then((response) => {
+        return response;
+      });
   };
 
-  this.getUser = function(id) {
+  this.getUser = (id) => {
     return $http({
       method: 'GET',
-      url: `/user?_id=${ id }`
-    }).then(function(response) {
-      return response;
-    });
+      url: `/user?_id=${ id }`,
+    })
+      .then((response) => {
+        return response;
+      });
   };
 
-  this.deleteUser = function(id) {
+  this.deleteUser = (id) => {
     return $http({
       method: 'DELETE',
-      url: `/user/${ id }`
-    }).then(function(response) {
-      return response;
-    });
+      url: `/user/${ id }`,
+    })
+      .then((response) => {
+        return response;
+      });
   };
 });

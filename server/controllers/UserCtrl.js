@@ -3,7 +3,7 @@ const User = require('../models/UserModel');
 module.exports = {
 
   register(req, res) {
-    User.create(req.body, function(err, result) {
+    User.create(req.body, (err, result) => {
       if (err) {
         return res.status(500).send(err);
       }
@@ -15,7 +15,7 @@ module.exports = {
   },
 
   read(req, res) {
-    User.find(req.query, function(err, result) {
+    User.find(req.query, (err, result) => {
       if (err) {
         return res.status(500).send(err);
       }
@@ -36,7 +36,7 @@ module.exports = {
   },
 
   update(req, res, next) {
-    User.findByIdAndUpdate(req.params._id, req.body, function(err, result) { // eslint-disable-line no-underscore-dangle
+    User.findByIdAndUpdate(req.params._id, req.body, (err, result) => { // eslint-disable-line no-underscore-dangle
       if (err) {
         return next(err);
       }

@@ -18,6 +18,7 @@ User.pre('save', function(next) {
   if (!user.isModified('password')) {
     return next();
   }
+
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(user.password, salt);
 
@@ -28,7 +29,6 @@ User.pre('save', function(next) {
 
 User.methods.verifyPassword = function(reqBodyPassword) {
   const user = this;
-
 
   return bcrypt.compareSync(reqBodyPassword, user.password);
 };

@@ -1,4 +1,7 @@
 /* eslint-disable object-shorthand */
+// If object-shorthand is not disabled then gulp creates a bad version of bundle.js
+// specifically around the resolve user methods
+
 angular.module('app', [ 'ui.router', 'ngStorage' ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');

@@ -5,7 +5,7 @@ angular.module('app').controller('navCtrl', function($scope, AuthService, $state
         $state.go('login');
       })
       .catch((err) => {
-        console.log('Error:\n', err);
+        console.log('Logout Error:\n', err);
       });
   };
 });

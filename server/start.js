@@ -1,4 +1,6 @@
-const mongoose = require('mongoose')
+'use strict';
+
+const mongoose = require('mongoose');
 
 require('dotenv').config();
 
@@ -10,7 +12,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 // import all of our models
-require('./models/index')
+require('./models/index');
 
 // Start our app!
 const app = require('./app');

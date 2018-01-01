@@ -8,10 +8,13 @@ angular.module('app').controller('registerCtrl', function($scope, AuthService, $
           error.message = 'Unable to create user';
           throw error;
         }
+
         alert('User Created');
+
         $scope.newUser = {};
         $state.go('login');
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log('RegisterUser Error:\n', err);
         alert(err.message);
       });
